@@ -1,12 +1,66 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
     <title>Document</title>
 </head>
+
 <body>
-    
+    <h1>Dit is een schoolopdracht!!!!!!!</h1>
+    <h1>Aangifte erfbelasting formulier</h1>
+    <br>
+    <form>
+
+        <fieldset>
+            <legend>
+                <h3>Vraag 1a</h3>
+            </legend>
+            <fieldset>
+                <legend>Naam<strong>*</strong></legend><label for="voorletter(s)"><input type="text" id="voorletter(s)" name="voorletter(s)-overledene" required></label>
+                <label for="tussenvoegsel(s)"><input type="text" id="tussenvoegsel(s)" name="tussenvoegsel(s)-overledene" required></label>
+                <label for="achternaam"><input type="text" id="achternaam" name="achternaam-overledene" required></label>
+            </fieldset>
+            <fieldset>
+                <legend>Burgerservicenummer overledene<strong>*</strong></legend><label for="Burgerservicenummer"><input type="text" id="Burgerservicenummer" name="Burgerservicenummer" required></label>
+            </fieldset>
+            <fieldset>
+                <legend>Overlijdensdatum<strong>*</strong></legend>
+                <label for="Overlijdensdatum"><input type="date" value="2025-02-27" max="2025-02-27" id="Overlijdensdatum" name="Overlijdensdatum" required></label>
+            </fieldset>
+        </fieldset>
+        <fieldset>
+            <legend>
+                <h3>Vraag 1b</h3>
+            </legend>
+            <fieldset>
+                <legend>getrouwd/ geregistreerd parter<strong>*</strong></legend>
+                <p>Was de overledene getrouwd of had de overledene een geregistreerd partner op het moment vanoverlijden?</p>
+                <ul>
+                    <li><label for="partner?"><input type="radio" name="partner?" value="ja" />Ja</label></li>
+                    <li><label for="partner?"><input type="radio" name="partner?" value="nee" />Nee <i>Ga verder met vraag 1c</i></label></li>
+                </ul>
+            </fieldset>
+            <fieldset>
+                <legend>partnerschapsvoorwaarden</legend>
+                <p>Hadden de overledene en diens echtgenoot of geregistreerd partner huwelijkse of partnerschapsvoorwaarden laten vastleggen in een notariële akte?</p>
+                <ul>
+                    <li><label for="partnerschapsvoorwaarden?"><input type="radio" name="partnerschapsvoorwaarden?" value="ja" />Ja</label></li>
+                    <li><label for="partnerschapsvoorwaarden?"><input type="radio" name="partnerschapsvoorwaarden?" value="nee" />Nee</label></li>
+                </ul>
+            </fieldset>
+            <fieldset>
+                <legend>finaal verrekenbeding</legend>
+                <p>Hadden de overledene en diens partner een finaal verrekenbeding?</p>
+                <ul>
+                    <li><label for="finaal-verrekenbeding?"><input type="radio" name="finaal-verrekenbeding?" value="ja" />Ja</label></li>
+                    <li><label for="finaal-verrekenbeding?"><input type="radio" name="finaal-verrekenbeding?" value="nee" />Nee</label></li>
+                </ul>
+            </fieldset>
+        </fieldset>
+    </form>
 </body>
+
 </html>

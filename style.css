@@ -12,10 +12,16 @@ body {
     background: var(--NS-Background-color);
 }
 
-section{
+main{
     display: flex;
     flex-direction: column;
     align-items: center;
+}
+
+section{
+    display: flex;
+    flex-direction: column;
+    max-width: 1200px;
 }
 
 section >*{
@@ -24,7 +30,6 @@ section >*{
 
 form {
     background: var(--NS-yellow);
-    width: 912px;
 
     >fieldset {
         display: grid;
@@ -36,13 +41,6 @@ form {
         background: var(--NS-white);
         border: 0;
     }
-}
-
-
-ul {
-    list-style: none;
-    margin: 0;
-    padding: 0;
 }
 
 button[type="submit"]{

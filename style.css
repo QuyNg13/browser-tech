@@ -12,77 +12,87 @@ body {
     background: var(--NS-Background-color);
 }
 
-main {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-section {
-    display: flex;
-    flex-direction: column;
-    max-width: 1200px;
-}
-
-section>* {
-    max-width: 1200px;
-}
-
-form {
-    background: var(--NS-yellow);
-
-    >fieldset {
-        display: grid;
-        border: 0;
-        gap: 28px;
+@media screen and (min-width:920px){
+    main {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
     }
-
-    fieldset fieldset {
-        background: var(--NS-white);
-        border: 0;
+    
+    section {
+        display: flex;
+        flex-direction: column;
+        max-width: 1200px;
     }
-}
-
-button[type="submit"] {
-    background: var(--NS-lightblue);
-    color: var(--NS-white);
-}
-
-button[type="submit"]:hover {
-    background: var(--NS-buttonhover-blue);
-}
-
-form:nth-of-type(1) {
-    fieldset:nth-of-type(1) {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-
-        fieldset:nth-of-type(1) {
-            grid-column-start: 1;
-            grid-column-end: end;
-
+    
+    section>* {
+        max-width: 1200px;
+    }
+    
+    form {
+        background: var(--NS-yellow);
+        width: 912px;
+    
+        >fieldset {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            justify-content: space-between;
-
-            label:not(:nth-last-of-type(1)) {
-                max-width: 90%;
+            border: 0;
+            gap: 28px;
+        }
+    
+        fieldset fieldset {
+            background: var(--NS-white);
+            border: 0;
+        }
+    }
+    
+    button[type="submit"] {
+        background: var(--NS-lightblue);
+        color: var(--NS-white);
+    }
+    
+    button[type="submit"]:hover {
+        background: var(--NS-buttonhover-blue);
+    }
+    
+    form:nth-of-type(1) {
+        fieldset:nth-of-type(1) {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+    
+            fieldset:nth-of-type(1) {
+                grid-column-start: 1;
+                grid-column-end: end;
+    
+                display: grid;
+                grid-template-columns: repeat(3, 1fr);
+                justify-content: space-between;
+    
+                label:not(:nth-last-of-type(1)) {
+                    max-width: 90%;
+                }
+            }
+    
+            fieldset:nth-of-type(2) {
+                grid-column-start: 1;
+                grid-column-end: 2;
+                width: 100%;
+            }
+    
+            fieldset:nth-of-type(3) {
+                grid-column-start: 2;
+                grid-column-end: 3;
+                width: 100%;
+            }
+    
+            label {
+                display: flex;
+                flex-direction: column;
             }
         }
+    }
 
-        fieldset:nth-of-type(2) {
-            grid-column-start: 1;
-            grid-column-end: 2;
-            width: 100%;
-        }
-
-        fieldset:nth-of-type(3) {
-            grid-column-start: 2;
-            grid-column-end: 3;
-            width: 100%;
-        }
-
-        label {
+    form:nth-of-type(2) {
+        fieldset:nth-of-type(1){
             display: flex;
             flex-direction: column;
         }
@@ -90,18 +100,17 @@ form:nth-of-type(1) {
 }
 
 form:nth-of-type(2) {
-    fieldset:nth-of-type(1){
-        display: flex;
-        flex-direction: column;
+    fieldset:nth-of-type(2), fieldset:nth-of-type(3){
+        display: none;
     }
 
-    fieldset:nth-of-type(1):has(input[value="nee"]:checked) fieldset:nth-of-type(2),
-    fieldset:nth-of-type(1):has(input[value="nee"]:checked) fieldset:nth-of-type(3){
+    fieldset:nth-of-type(1):has(input[name="partner?"][value="nee"]:checked) fieldset:nth-of-type(2),
+    fieldset:nth-of-type(1):has(input[name="partner?"][value="nee"]:checked) fieldset:nth-of-type(3){
         display:none;
     }
     
-    fieldset:nth-of-type(1):has(input[value="ja"]:checked) fieldset:nth-of-type(2),
-    fieldset:nth-of-type(1):has(input[value="ja"]:checked) fieldset:nth-of-type(3){
+    fieldset:nth-of-type(1):has(input[name="partner?"][value="ja"]:checked) fieldset:nth-of-type(2),
+    fieldset:nth-of-type(1):has(input[name="partner?"][value="ja"]:checked) fieldset:nth-of-type(3){
         display:flex;
         flex-direction: column;
     }

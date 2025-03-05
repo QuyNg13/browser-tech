@@ -1,3 +1,16 @@
+body{
+    --NS-yellow: #FFC917;
+    --NS-blue: #003082;
+    --NS-lightblue: #0063D3;
+    --NS-white: #FFFFFF;
+    --NS-Background-color: #E6E6E9;
+    --NS-error-color: #DB0029;
+    --NS-success-color: #009A42;
+    --NS-textlink-color: #0079D3;
+    --NS-buttonhover-blue: #005CA0;
+    --NS-buttonhover-yellow: #FFB519;
+}
+
 ul{
     list-style: none;
     margin: 0;

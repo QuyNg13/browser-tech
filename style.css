@@ -1,4 +1,4 @@
-body{
+body {
     --NS-yellow: #FFC917;
     --NS-blue: #003082;
     --NS-lightblue: #0063D3;
@@ -9,10 +9,82 @@ body{
     --NS-textlink-color: #0079D3;
     --NS-buttonhover-blue: #005CA0;
     --NS-buttonhover-yellow: #FFB519;
+    background: var(--NS-Background-color);
 }
 
-ul{
+section{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+section >*{
+    max-width: 1200px;
+}
+
+form {
+    background: var(--NS-yellow);
+    width: 912px;
+
+    >fieldset {
+        display: grid;
+        border: 0;
+        gap: 28px;
+    }
+
+    fieldset fieldset {
+        background: var(--NS-white);
+        border: 0;
+    }
+}
+
+
+ul {
     list-style: none;
     margin: 0;
     padding: 0;
-} 
+}
+
+button[type="submit"]{
+    background: var(--NS-lightblue);
+    color: var(--NS-white);
+}
+
+button[type="submit"]:hover{
+    background: var(--NS-buttonhover-blue);
+}
+
+form:nth-of-type(1) {
+    fieldset:nth-of-type(1) {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+
+        fieldset:nth-of-type(1) {
+            grid-column-start: 1;
+            grid-column-end: end;
+
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            justify-content: space-between;
+
+            label:not(:nth-last-of-type(1)) {
+                max-width: 90%;
+            }
+        }
+        fieldset:nth-of-type(2){
+            grid-column-start: 1;
+            grid-column-end: 2;
+            width: 100%;
+        }
+        fieldset:nth-of-type(3){
+            grid-column-start: 2;
+            grid-column-end: 3;
+            width: 100%;
+        }
+    }
+
+    label {
+        display: flex;
+        flex-direction: column;
+    }
+}

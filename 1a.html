@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>Dit is een schoolopdracht!!!!!!!</h1>
+    <h1>Aangifte erfbelasting formulier</h1>
+    <br>
+    <main>
+        <section>
+            <form id="vraag1a" action="1b.html">
+                <legend><h2>vul hier de gegevens in van de overledene</h2></legend>
+                <fieldset>
+                    <legend>
+                        <h3>Vraag 1a</h3>
+                    </legend>
+                    <fieldset>
+                        <legend hidden>volledige naam overledene*</legend>
+                        <label for="voorletter(s)">
+                            voorletter(s)*
+                            <input type="text" id="voorletter(s)" name="voorletter(s)-overledene" required></label>
+                        <label for="tussenvoegsel(s)">
+                            tussenvoegsel(s)
+                            <input type="text" id="tussenvoegsel(s)" name="tussenvoegsel(s)-overledene"></label>
+                        <label for="achternaam">
+                            achternaam*
+                            <input type="text" id="achternaam" name="achternaam-overledene" required></label>
+                    </fieldset>
+                    <fieldset>
+                        <legend hidden>Burgerservicenummer overledene*</legend>
+                        <label for="Burgerservicenummer">
+                            Burgerservicenummer overledene*
+                            <input type="text" id="Burgerservicenummer" name="Burgerservicenummer" pattern="\d{9,9}"
+                                required></label>
+                    </fieldset>
+                    <fieldset>
+                        <legend hidden>Overlijdensdatum*</legend>
+                        <label for="Overlijdensdatum">
+                            Overlijdensdatum*
+                            <input type="date" value="2025-02-27" max="2025-02-27" id="Overlijdensdatum"
+                                name="Overlijdensdatum" required></label>
+                    </fieldset>
+                </fieldset>
+                <button type="submit">volgende</button>
+            </form>
+        </section>
+    </main>
+</body>
+<script src="script.js"></script>
+
+</html>

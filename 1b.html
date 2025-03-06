@@ -14,42 +14,7 @@
     <br>
     <main>
         <section>
-            <form>
-                <legend><h2>vul hier de gegevens in van de overledene</h2></legend>
-                <fieldset>
-                    <legend>
-                        <h3>Vraag 1a</h3>
-                    </legend>
-                    <fieldset>
-                        <legend hidden>volledige naam overledene*</legend>
-                        <label for="voorletter(s)">
-                            voorletter(s)*
-                            <input type="text" id="voorletter(s)" name="voorletter(s)-overledene" required></label>
-                        <label for="tussenvoegsel(s)">
-                            tussenvoegsel(s)
-                            <input type="text" id="tussenvoegsel(s)" name="tussenvoegsel(s)-overledene"></label>
-                        <label for="achternaam">
-                            achternaam*
-                            <input type="text" id="achternaam" name="achternaam-overledene" required></label>
-                    </fieldset>
-                    <fieldset>
-                        <legend hidden>Burgerservicenummer overledene*</legend>
-                        <label for="Burgerservicenummer">
-                            Burgerservicenummer overledene*
-                            <input type="text" id="Burgerservicenummer" name="Burgerservicenummer" pattern="\d{9,9}"
-                                required></label>
-                    </fieldset>
-                    <fieldset>
-                        <legend hidden>Overlijdensdatum*</legend>
-                        <label for="Overlijdensdatum">
-                            Overlijdensdatum*
-                            <input type="date" value="2025-02-27" max="2025-02-27" id="Overlijdensdatum"
-                                name="Overlijdensdatum" required></label>
-                    </fieldset>
-                </fieldset>
-                <button type="submit">volgende</button>
-            </form>
-            <form>
+            <form class="checkboxes">
                 <fieldset>
                     <legend>
                         <h3>Vraag 1b</h3>
@@ -64,7 +29,7 @@
                             <input type="radio" name="partner?" value="nee">Nee <i>Ga verder met vraag 1c</i>
                         </label>
                     </fieldset>
-                    <fieldset hidden>
+                    <fieldset>
                         <legend hidden>partnerschapsvoorwaarden</legend>
                         <p>Hadden de overledene en diens echtgenoot of geregistreerd partner huwelijkse of
                             partnerschapsvoorwaarden laten vastleggen in een notariële akte?</p>
@@ -72,16 +37,14 @@
                             <input type="radio" name="partnerschapsvoorwaarden?" value="ja">Ja</label>
                         <label>
                             <input type="radio" name="partnerschapsvoorwaarden?" value="nee">Nee</label>
-
                     </fieldset>
-                    <fieldset hidden>
+                    <fieldset>
                         <legend hidden>finaal verrekenbeding</legend>
                         <p>Hadden de overledene en diens partner een finaal verrekenbeding?</p>
                         <label>
                             <input type="radio" name="finaal-verrekenbeding?" value="ja">Ja</label>
                         <label>
                             <input type="radio" name="finaal-verrekenbeding?" value="nee">Nee</label>
-
                     </fieldset>
                 </fieldset>
                 <button type="submit">volgende</button>

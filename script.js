@@ -1,3 +1,9 @@
+document.addEventListener("DOMContentLoaded", function () {
+    document.querySelectorAll(".checkboxes fieldset:not(:first-of-type)").forEach(fieldset => {
+        fieldset.style.display = "none";
+    });
+});
+
 document.querySelectorAll('.checkboxes fieldset:first-of-type input').forEach(function (radio) {
     radio.addEventListener('change', function () {
         const fieldsets = document.querySelectorAll('.checkboxes fieldset:nth-of-type(2),.checkboxes fieldset:nth-of-type(3)');

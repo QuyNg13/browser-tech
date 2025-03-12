@@ -13,6 +13,10 @@ body {
     font-family: sans-serif;
 }
 
+h1{
+    overflow: hidden;
+}
+
 main {
     display: flex;
     flex-direction: column;
@@ -41,6 +45,9 @@ form{
         display: grid;
         border: 0;
         gap: 28px;
+    }
+    >legend{
+        margin: 0 0.75em;
     }
 }
 

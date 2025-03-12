@@ -75,8 +75,10 @@ form{
     }
 }
 
-.checkboxes fieldset:not(:first-of-type) {
-    display: none;
+@supports selector(:has(*)){
+    .checkboxes fieldset:not(:first-of-type) {
+        display: none;
+    }
 }
 
 @media screen and (min-width:920px){

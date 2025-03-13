@@ -14,7 +14,7 @@
     <br>
     <main>
         <section>
-            <form class="checkboxes" data-form-topic="foo2">
+            <form class="checkboxes" data-form-topic="1b">
                 <fieldset>
                     <legend>
                         <h3>Vraag 1b</h3>
@@ -24,28 +24,37 @@
                         <p>Was de overledene getrouwd of had de overledene een geregistreerd partner op het moment
                             vanoverlijden?</p>
                         <label>
-                            <input type="radio" name="partner?" value="ja" required>Ja</label>
+                            <input type="radio" name="morepartner" value="ja" required>Ja</label>
                         <label>
-                            <input type="radio" name="partner?" value="nee">Nee</label>
+                            <input type="radio" name="morepartner" value="nee">Nee</label>
                     </fieldset>
-                    <fieldset>
-                        <legend hidden>partnerschapsvoorwaarden</legend>
-                        <p>Hadden de overledene en diens echtgenoot of geregistreerd partner huwelijkse of
-                            partnerschapsvoorwaarden laten vastleggen in een notariële akte?</p>
-                        <label>
-                            <input type="radio" name="partnerschapsvoorwaarden?" value="ja">Ja</label>
-                        <label>
-                            <input type="radio" name="partnerschapsvoorwaarden?" value="nee">Nee</label>
-                    </fieldset>
-                    <fieldset>
-                        <legend hidden>finaal verrekenbeding</legend>
-                        <p>Hadden de overledene en diens partner een finaal verrekenbeding?</p>
-                        <label>
-                            <input type="radio" name="finaal-verrekenbeding?" value="ja">Ja</label>
-                        <label>
-                            <input type="radio" name="finaal-verrekenbeding?" value="nee">Nee</label>
-                    </fieldset>
+                    <div data-name="namepartner">
+                        <fieldset class="checkboxes">
+                            <legend hidden>partnerschapsvoorwaarden</legend>
+                            <fieldset>
+                                <p>Hadden de overledene en diens echtgenoot of geregistreerd partner huwelijkse of
+                                    partnerschapsvoorwaarden laten vastleggen in een notariële akte?</p>
+                                <label>
+                                    <input type="radio" name="morepartnerschapsvoorwaarden" value="ja">Ja</label>
+                                <label>
+                                    <input type="radio" name="morepartnerschapsvoorwaarden" value="nee">Nee</label>
+                            </fieldset>
+                            <div data-name="namepartnerschapsvoorwaarden">
+                                <fieldset>
+                                    <input type="file">
+                                </fieldset>
+                            </div>
+                        </fieldset>
+                        <fieldset>
+                            <legend hidden>finaal verrekenbeding</legend>
+                            <p>Hadden de overledene en diens partner een finaal verrekenbeding?</p>
+                            <label>
+                                <input type="radio" name="finaalverrekenbeding" value="ja">Ja</label>
+                            <label>
+                                <input type="radio" name="finaalverrekenbeding" value="nee">Nee</label>
+                        </fieldset>
                 </fieldset>
+                </div>
                 <div>
                     <a href="1a.html" class="btn">Vorige</a>
                     <input type="submit" value="Volgende" class="btn">

@@ -4,6 +4,109 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 });
 
+function toggleDivVisibility() {
+    const toggleVisibility = (radioButtons, divSelector) => {
+        radioButtons.forEach(button => {
+            button.addEventListener('change', () => {
+                const selectedButton = document.querySelector(`input[name="${radioButtons[0].name}"]:checked`);
+                
+                // Controleer of er een geselecteerde radio button is
+                if (selectedButton) {
+                    const selectedValue = selectedButton.value;
+                    const div = document.querySelector(divSelector);
+
+                    if (selectedValue === 'ja') {
+                        div.style.display = 'flex';
+                        div.style.flexDirection = 'column';
+                        div.querySelectorAll('input').forEach(input => input.setAttribute('required', 'true'));
+                    } else {
+                        div.style.display = 'none';
+                        div.querySelectorAll('input').forEach(input => input.removeAttribute('required'));
+                    }
+                }
+            });
+        });
+    };
+
+    const partnerRadioButtons = document.querySelectorAll('input[name="morepartner"]');
+    const partnerschapsvoorwaardenRadioButtons = document.querySelectorAll('input[name="morepartnerschapsvoorwaarden"]');
+    
+    toggleVisibility(partnerRadioButtons, '[data-name="namepartner"]');
+    toggleVisibility(partnerschapsvoorwaardenRadioButtons, '[data-name="namepartnerschapsvoorwaarden"]');
+}
+
+// function toggleDivVisibility() {
+//     const partnerRadioButtons = document.querySelectorAll('input[name="morepartner"]');
+//     const partnerschapsvoorwaardenRadioButtons = document.querySelectorAll('input[name="morepartnerschapsvoorwaarden"]');
+    
+//     const partnerDiv = document.querySelector('[data-name="namepartner?"]');
+//     const partnerschapsvoorwaardenDiv = document.querySelector('[data-name="namepartnerschapsvoorwaarden"]');
+
+//     partnerRadioButtons.forEach(button => {
+//         button.addEventListener('change', () => {
+//             if (document.querySelector('input[name="morepartner"]:checked').value === 'ja') {
+//                 partnerDiv.style.display = 'flex';
+//                 partnerDiv.style.flexDirection = 'column';
+//                 partnerDiv.querySelectorAll('input').forEach(input => input.setAttribute('required', 'true'));
+//             } else {
+//                 partnerDiv.style.display = 'none';
+//                 partnerDiv.querySelectorAll('input').forEach(input => input.removeAttribute('required'));
+//             }
+//         });
+//     });
+    
+//     partnerschapsvoorwaardenRadioButtons.forEach(button => {
+//         button.addEventListener('change', () => {
+//             if (document.querySelector('input[name="morepartnerschapsvoorwaarden"]:checked').value === 'ja') {
+//                 partnerschapsvoorwaardenDiv.style.display = 'flex';
+//                 partnerschapsvoorwaardenDiv.style.flexDirection = 'column';
+//                 partnerschapsvoorwaardenDiv.querySelectorAll('input').forEach(input => input.setAttribute('required', 'true'));
+//             } else {
+//                 partnerschapsvoorwaardenDiv.style.display = 'none';
+//                 partnerschapsvoorwaardenDiv.querySelectorAll('input').forEach(input => input.removeAttribute('required'));
+//             }
+//         });
+//     });
+// }
+
+// Initialiseer de functie wanneer de pagina geladen is
+// document.addEventListener('DOMContentLoaded', toggleDivVisibility);
+
+// document.querySelectorAll('.checkboxes > fieldset:first-of-type input').forEach(radio => {
+//     radio.addEventListener('change', () => {
+//         const value = document.querySelector('.checkboxes fieldset:first-of-type input:checked').value;
+        
+//         document.querySelectorAll('.checkboxes fieldset:not(:first-of-type)').forEach(fieldset => {
+//             fieldset.querySelectorAll('input').forEach(input => input.removeAttribute('required'));
+
+//             switch (value) {
+//                 case 'ja':
+//                     fieldset.style.display = 'flex';
+//                     fieldset.style.flexDirection = 'column';
+//                     fieldset.disabled = false;
+//                     fieldset.querySelectorAll('input').forEach(input => input.setAttribute('required', 'true'));
+//                     break;
+
+//                 case 'nee':
+//                     fieldset.style.display = 'none';
+//                     break;
+//             }
+//         });
+//     });
+// });
+
+// document.querySelectorAll('.checkboxes >fieldset:first-of-type input').forEach(radio => {
+//     radio.addEventListener('change', () => {
+//         const ja = document.querySelector('.checkboxes fieldset:first-of-type input:checked').value === 'ja';
+//         document.querySelectorAll('.checkboxes fieldset:not(:first-of-type)').forEach(fieldset => {
+//             fieldset.style.display = ja ? 'flex' : 'none';
+//             fieldset.style.flexDirection = 'column';
+//             fieldset.disabled = !ja;
+//             fieldset.querySelectorAll('input').forEach(input => input.toggleAttribute('required', ja));
+//         });
+//     });
+// });
+
 // document.querySelectorAll('.checkboxes fieldset:first-of-type input').forEach(function (radio) {
 //     radio.addEventListener('change', function () {
 //         const fieldsets = document.querySelectorAll('.checkboxes fieldset:nth-of-type(2),.checkboxes fieldset:nth-of-type(3)');
@@ -26,18 +129,6 @@ document.addEventListener("DOMContentLoaded", function () {
 //         });
 //     });
 // });
-
-document.querySelectorAll('.checkboxes fieldset:first-of-type input').forEach(radio => {
-    radio.addEventListener('change', () => {
-        const ja = document.querySelector('.checkboxes fieldset:first-of-type input:checked').value === 'ja';
-        document.querySelectorAll('.checkboxes fieldset:not(:first-of-type)').forEach(fieldset => {
-            fieldset.style.display = ja ? 'flex' : 'none';
-            fieldset.style.flexDirection = 'column';
-            fieldset.disabled = !ja;
-            fieldset.querySelectorAll('input').forEach(input => input.toggleAttribute('required', ja));
-        });
-    });
-});
 
 
 // =======================================================================================

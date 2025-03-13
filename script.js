@@ -1,8 +1,8 @@
-document.addEventListener("DOMContentLoaded", function () {
-    document.querySelectorAll(".checkboxes fieldset:not(:first-of-type)").forEach(fieldset => {
-        fieldset.style.display = "none";
-    });
-});
+// document.addEventListener("DOMContentLoaded", function () {
+//     document.querySelectorAll(".checkboxes fieldset:not(:first-of-type)").forEach(fieldset => {
+//         fieldset.style.display = "none";
+//     });
+// });
 
 function toggleDivVisibility() {
     const toggleVisibility = (radioButtons, divSelector) => {

@@ -5,45 +5,40 @@
 // });
 
 function toggleDivVisibility() {
-    const toggleVisibility = (radioButtons, divSelector) => {
-        radioButtons.forEach(button => {
-            button.addEventListener('change', () => {
-                const selectedButton = document.querySelector(`input[name="${radioButtons[0].name}"]:checked`);
-                
-                // Controleer of er een geselecteerde radio button is
-                if (selectedButton) {
-                    const selectedValue = selectedButton.value;
-                    const div = document.querySelector(divSelector);
-
-                    if (selectedValue === 'ja') {
-                        div.style.display = 'flex';
-                        div.style.flexDirection = 'column';
-                        div.querySelectorAll('input').forEach(input => input.setAttribute('required', 'true'));
-                    } else {
-                        div.style.display = 'none';
-                        div.querySelectorAll('input').forEach(input => input.removeAttribute('required'));
-                    }
-                }
-            });
-        });
-    };
-
-    const partnerRadioButtons = document.querySelectorAll('input[name="morepartner"]');
-    const partnerschapsvoorwaardenRadioButtons = document.querySelectorAll('input[name="morepartnerschapsvoorwaarden"]');
+    const radioButtons = document.querySelectorAll('input[type="radio"][name^="more"]');
     
-    toggleVisibility(partnerRadioButtons, '[data-name="namepartner"]');
-    toggleVisibility(partnerschapsvoorwaardenRadioButtons, '[data-name="namepartnerschapsvoorwaarden"]');
+    radioButtons.forEach(radio => {
+        const radioName = radio.name;
+        const dataName = `[data-name="name${radioName.replace('more', '')}"]`;
+        
+        const targetDiv = document.querySelector(dataName);
+        
+        radio.addEventListener('change', () => {
+            const isChecked = document.querySelector(`input[name="${radioName}"]:checked`);
+            
+            if (isChecked && isChecked.value === 'ja') {
+                targetDiv.style.display = 'flex';
+                targetDiv.style.flexDirection = 'column';
+                targetDiv.querySelectorAll('input').forEach(input => input.setAttribute('required', 'true'));
+            } else {
+                targetDiv.style.display = 'none';
+                targetDiv.querySelectorAll('input').forEach(input => input.removeAttribute('required'));
+            }
+        });
+    });
 }
+
+document.addEventListener('DOMContentLoaded', toggleDivVisibility);
 
 // function toggleDivVisibility() {
 //     const partnerRadioButtons = document.querySelectorAll('input[name="morepartner"]');
 //     const partnerschapsvoorwaardenRadioButtons = document.querySelectorAll('input[name="morepartnerschapsvoorwaarden"]');
     
-//     const partnerDiv = document.querySelector('[data-name="namepartner?"]');
+//     const partnerDiv = document.querySelector('[data-name="namepartner"]');
 //     const partnerschapsvoorwaardenDiv = document.querySelector('[data-name="namepartnerschapsvoorwaarden"]');
 
-//     partnerRadioButtons.forEach(button => {
-//         button.addEventListener('change', () => {
+//     partnerRadioButtons.forEach(radio => {
+//         radio.addEventListener('change', () => {
 //             if (document.querySelector('input[name="morepartner"]:checked').value === 'ja') {
 //                 partnerDiv.style.display = 'flex';
 //                 partnerDiv.style.flexDirection = 'column';
@@ -55,8 +50,8 @@ function toggleDivVisibility() {
 //         });
 //     });
     
-//     partnerschapsvoorwaardenRadioButtons.forEach(button => {
-//         button.addEventListener('change', () => {
+//     partnerschapsvoorwaardenRadioButtons.forEach(radio => {
+//         radio.addEventListener('change', () => {
 //             if (document.querySelector('input[name="morepartnerschapsvoorwaarden"]:checked').value === 'ja') {
 //                 partnerschapsvoorwaardenDiv.style.display = 'flex';
 //                 partnerschapsvoorwaardenDiv.style.flexDirection = 'column';
@@ -69,7 +64,6 @@ function toggleDivVisibility() {
 //     });
 // }
 
-// Initialiseer de functie wanneer de pagina geladen is
 // document.addEventListener('DOMContentLoaded', toggleDivVisibility);
 
 // document.querySelectorAll('.checkboxes > fieldset:first-of-type input').forEach(radio => {

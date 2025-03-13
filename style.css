@@ -52,6 +52,14 @@ form{
     }
 }
 
+input:user-invalid{
+    border:solid var(--NS-error-color);
+}
+
+input:user-valid{
+    border:solid var(--NS-success-color);
+}
+
 #vraag1a {
     label {
         display: flex;

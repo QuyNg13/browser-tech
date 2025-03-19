@@ -865,6 +865,11 @@ function verplaatsKnoppen() {
 }
 ```
 </details>
+</details>
 
-
+<details>
+<summary><h2>Bronnen</h2></summary>
+  - [MDN artikel over opbouw van forms]<br>(https://developer.mozilla.org/en-US/docs/Learn_web_development/Extensions/Forms/How_to_structure_a_web_form) <br>
+  - [localstorage code van jeremy keith]<br>(https://gist.github.com/rosemulazada/29379f3e0586491f235e0eb39d108aa5) <br>
+  - ChatGPT voor troubleshooting en helpen met het maken van vraag 3b 
 </details>

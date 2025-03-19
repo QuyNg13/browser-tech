@@ -87,10 +87,8 @@ input:user-valid{
 }
 
 .checkboxes{
-    >fieldset:first-child{
         display: flex;
         flex-direction: column;
-    }
 }
 
 @media screen and (min-width:920px){

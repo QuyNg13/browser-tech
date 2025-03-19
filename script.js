@@ -49,6 +49,7 @@ function verkrijgerknop(){
     addButton.type = "button";
     addButton.textContent = "Voeg verkrijger toe";
     addButton.onclick = verkrijgertoevoegen;
+    addButton.classList.add("btn");
     verkrijgerContainer.appendChild(addButton);
 }
 
@@ -98,8 +99,8 @@ function verkrijgertoevoegen() {
                 <input type="radio" name="legitiemeportie${verkrijgerTeller}" value="nee">Nee
             </label>
         </fieldset>
-        <button type="button" onclick="verkrijgertoevoegen()">verkrijger toevoegen</button>
-        <button type="button" onclick="verkrijgerVerwijderen()">laatste verkrijger verwijderen</button>`;
+        <button class="btn" type="button" onclick="verkrijgertoevoegen()">verkrijger toevoegen</button>
+        <button class="btn" type="button" onclick="verkrijgerVerwijderen()">laatste verkrijger verwijderen</button>`;
 
     formContainer.appendChild(newForm);
 }

@@ -23,8 +23,8 @@
                         <h3>Vraag 1a</h3>
                     </legend>
                     <fieldset>
+                        <h4>volledige naam overledene*</h4>
                         <div class="threecolumns">
-                            <legend hidden>volledige naam overledene*</legend>
                             <label for="voorletter(s)">
                                 voorletter(s)*
                                 <input type="text" id="voorletter(s)" name="voorlettersoverledene" required></label>
@@ -37,19 +37,22 @@
                         </div>
                     </fieldset>
                     <fieldset>
+                        <h4>Burgerservicenummer en overlijdensdatum*</h4>
                         <div class="twocolumns">
-                            <legend hidden>Burgerservicenummer overledene*</legend>
-                            <label for="Burgerservicenummer">
-                                Burgerservicenummer overledene*
-                                <input type="text" id="Burgerservicenummer" name="Burgerservicenummer" minlength="8"
-                                    maxlength="9" pattern="[0-9]+" required>
-                            </label>
-                            <legend hidden>Overlijdensdatum*</legend>
-                            <label for="Overlijdensdatum">
-                                Overlijdensdatum*
-                                <input type="date" value="2025-02-27" max="2025-02-27" id="Overlijdensdatum"
-                                    name="Overlijdensdatum" required>
-                            </label>
+                            <div>
+                                <label for="Burgerservicenummer">
+                                    Burgerservicenummer*
+                                    <input type="text" id="Burgerservicenummer" name="Burgerservicenummer" minlength="8"
+                                        maxlength="9" pattern="[0-9]+" required>
+                                </label>
+                            </div>
+                            <div>
+                                <label for="Overlijdensdatum">
+                                    Overlijdensdatum*
+                                    <input type="date" value="2025-02-27" max="2025-02-27" id="Overlijdensdatum"
+                                        name="Overlijdensdatum" required>
+                                </label>
+                            </div>
                         </div>
                     </fieldset>
                 </fieldset>

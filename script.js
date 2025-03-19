@@ -98,11 +98,7 @@ function verkrijgertoevoegen(button) {
             <label>
                 <input type="radio" name="legitiemeportie${verkrijgerTeller}" value="nee">Nee
             </label>
-        </fieldset>
-        <div id="verkrijgerbuttons">
-        <button class="btn" type="button" onclick="verkrijgertoevoegen()">verkrijger toevoegen</button>
-        <button class="btn" type="button" onclick="verkrijgerVerwijderen()">laatste verkrijger verwijderen</button>
-        </div>`;
+        </fieldset>`;
         
 
     formContainer.appendChild(newForm);

@@ -4,6 +4,17 @@
 //     });
 // });
 
+document.addEventListener("DOMContentLoaded", () => {
+    document.querySelectorAll('[data-name^="name"]').forEach(div => {
+        div.style.display = 'none';
+    });
+
+    toggleDivVisibility();
+    verkrijgerknop();
+    hideverkrijger();
+
+});
+
 function toggleDivVisibility() {
     const radioButtons = document.querySelectorAll('input[type="radio"][name^="more"]');
 
@@ -28,17 +39,6 @@ function toggleDivVisibility() {
     });
 }
 
-document.addEventListener("DOMContentLoaded", () => {
-    document.querySelectorAll('[data-name^="name"]').forEach(div => {
-        div.style.display = 'none';
-    });
-
-    toggleDivVisibility();
-    verkrijgerknop();
-    hideverkrijger();
-
-});
-
 function hideverkrijger(){
     document.getElementById('nojs').style.display = 'none';
 }
@@ -54,7 +54,6 @@ function verkrijgerknop(){
 }
 
 let verkrijgerTeller = 1;
-
 function verkrijgertoevoegen(button) {
     verkrijgerTeller++;
 

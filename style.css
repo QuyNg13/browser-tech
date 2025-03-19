@@ -52,7 +52,27 @@ form{
     }
 }
 
-input:user-invalid{
+input[type="text"], input[type="date"]{
+    border:solid var(--NS-buttonhover-blue);
+    border-radius: 2px;
+
+    &:user-invalid{
+        border:solid var(--NS-error-color);
+        outline: 0.2em solid var(--NS-error-color);
+    }
+
+    &:user-valid{
+        border:solid var(--NS-success-color);
+        outline: 0.2em solid var(--NS-success-color);
+    }
+}
+
+input[type="radio"]{
+    accent-color: var(--NS-lightblue);
+}
+
+
+/* input:user-invalid{
     outline: 0.2em solid var(--NS-error-color);
     border-radius: 2px;
 }
@@ -60,7 +80,7 @@ input:user-invalid{
 input:user-valid{
     outline: 0.2em solid var(--NS-success-color);
     border-radius: 2px;
-}
+} */
 
 .columnlabel{
     label {
@@ -69,11 +89,16 @@ input:user-valid{
     }
 }
 
+.verkrijger{
+    margin-top: 1em;
+}
+
 .btn{
     all: unset;
     padding: 10px 18px;
     background: var(--NS-lightblue);
     color: var(--NS-white);
+    border: 0;
     margin: 0.75em;
     border-radius: 4px;
     font-family: sans-serif;

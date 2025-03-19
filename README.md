@@ -210,6 +210,8 @@ Ik heb styling toegepast door de kleuren van NS als custom property op te slaan 
 ```
 </details>
 
+<img src="images/vraag1a.png">
+
 Ik ben er deze week ook achter gekomen dat bij vraag 1b, vragen worden overgeslagen op basis van welk antwoord er wordt gegeven. ik wou er graag voor zorgen dat de vragen die mogelijk worden overgeslagen in eerste instantie niet zichtbaar zijn tenzij je op de benodigde radio button hebt gedrukt. Ik heb dit gedaan door een javascript bestand te maken en daar de fielsets te laten verschijnen op basis van de waarde van de fieldset daarboven met een `if else` statement. op basis van deze value zeg ik ook dat de velden die tevoorschijn komen `required` worden.
 
 <details>
@@ -252,6 +254,8 @@ momenteeel worden de vragen die weergegeven worden op basis van de value van de 
 
 ### Voortgang
 Ik heb een beetje verdiept in validatie door te kijken naar het veld voor het BSN nummer. Met behulp van `pattern`, `minlength` en `maxlength` heb ik ervoor gezorgd dat alleen cijfers geldig zijn in het veld en dat het veld alleen valid is als er 8 of 9 characters in zitten.
+
+<img src="images/BSN-validation.png">
 <details>
   <summary>BSN validatie</h4></summary>
     
@@ -357,6 +361,11 @@ if (window.sessionStorage) {
 </details>
 
 Ik heb deze week meerdere versies gemaakt van de functie die er voor zorgt dat je optionele vragen pas te zien krijgs als de value van de radio button juist is. De code moest niet onnodig lang/ingewikkeld zijn en zelf de benodigde fieldset onzichtbaar maken zodat als JS niet werkt de gebruiker het hele form ziet en gewoon door kan gaan met het formulier invullen. Bij vraag 1b komen er 2 vragen uit, uit beide van deze vragen komt nog een invoerveld op basis van hoe je de vraag beantwoord. Ik ben er hier dus achter gekomen dat de vragen en inputs tevoorschijn moeten komen afhankelijk van de value van de radio button van de directe parent.
+
+<img src="images/vraag1bdicht.png">
+<img src="images/vraag1bhalf.png">
+<img src="images/vraag1bopen.png">
+
 <details>
   <summary>alle versies</summary>
     
@@ -548,6 +557,7 @@ Na zo lang gewerkt te hebben aan hetzelfe probleem wil ik deze week beginnen aan
 
 ### Voortgang
 Om ervoor te zorgen dat alles zichtbaar is wanneer JS niet werkt heb ik het zo gemaakt dat staandaard alles zichtbaar is en dat JS de elementen onzichtbaar maakt.
+
 <details>
   <summary>progressive enhancement</summary>
     
@@ -568,6 +578,8 @@ function hideverkrijger(){
 </details>
 
 Bij het maken van vraag 3b ben ik begonnen met het maken van de HTML. Ik ben er vanuit gegaan dat als JS niet werkt dat er dan vier verkrijgers zijn zoals bij het PDF bestand. deze vier formulieren staan ook niet op required aangezien we er niet van uit kunnen gaan dat iedereen deze velden nodig heeft.
+
+<img src="images/vraag3bnoJS.png">
 
 <details>
   <summary>vraag 3b HTML</summary>
@@ -840,6 +852,8 @@ function verkrijgerVerwijderen() {
 </details>
 
 Elke keer dat er een formulier wordt toegevoegd of verwijderd moet de knoppen van het toevoegen en verwijder verplaatst worden naar het laatste form. Dit heb ik gedaan met een functie die de knoppen elke keer verwijders wanner er een formulier word toegevoegd of verwijderd en de knoppen onder het form zet met de hoogste teller. Ik heb deze functie gemaakt met behulp van chatGPT. ik had de knoppen eerst onder elke form staan en werden niet verwijderd, hierdoor stonden de knoppen onder elke form.
+
+<img src="images/vraag3bwJS.png">
 <details>
   <summary>knoppen verplaatsen op basis van aantal forms</summary>
     

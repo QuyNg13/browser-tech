@@ -1,9 +1,4 @@
-// document.addEventListener("DOMContentLoaded", function () {
-//     document.querySelectorAll(".checkboxes fieldset:not(:first-of-type)").forEach(fieldset => {
-//         fieldset.style.display = "none";
-//     });
-// });
-
+// functies aan zetten en onzichtbaar maken als javascript het doet
 document.addEventListener("DOMContentLoaded", () => {
     document.querySelectorAll('[data-name^="name"]').forEach(div => {
         div.style.display = 'none';
@@ -15,6 +10,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 });
 
+// div zichtbaar op basis van radio value
 function toggleDivVisibility() {
     const radioButtons = document.querySelectorAll('input[type="radio"][name^="more"]');
 
@@ -39,10 +35,12 @@ function toggleDivVisibility() {
     });
 }
 
+// onzichtbaar maken als javascript het doet
 function hideverkrijger(){
     document.getElementById('nojs').style.display = 'none';
 }
 
+// knop aanmaken als javascript het doet
 function verkrijgerknop(){
     const verkrijgerContainer = document.querySelector('[data-name="nameverkrijger"] > div');
     const addButton = document.createElement("button");
@@ -53,6 +51,7 @@ function verkrijgerknop(){
     verkrijgerContainer.appendChild(addButton);
 }
 
+// form toevoegen bij drukken op knop
 let verkrijgerTeller = 1;
 function verkrijgertoevoegen(button) {
     verkrijgerTeller++;
@@ -105,7 +104,7 @@ function verkrijgertoevoegen(button) {
     verplaatsKnoppen();
 }
 
-
+// knoppen verwijderen bij verwijderen van form
 function verkrijgerVerwijderen() {
     const formContainer = document.querySelector('[data-name="nameverkrijger"]');
     const verkrijgers = formContainer.querySelectorAll(".verkrijger");
@@ -118,6 +117,7 @@ function verkrijgerVerwijderen() {
     verplaatsKnoppen();
 }
 
+// knoppen verplaatsen bij teovoegen van form
 function verplaatsKnoppen() {
     const formContainer = document.querySelector('[data-name="nameverkrijger"]');
     const verkrijgers = formContainer.querySelectorAll(".verkrijger");
@@ -138,103 +138,7 @@ function verplaatsKnoppen() {
     }
 }
 
-// function toggleDivVisibility() {
-//     const partnerRadioButtons = document.querySelectorAll('input[name="morepartner"]');
-//     const partnerschapsvoorwaardenRadioButtons = document.querySelectorAll('input[name="morepartnerschapsvoorwaarden"]');
-
-//     const partnerDiv = document.querySelector('[data-name="namepartner"]');
-//     const partnerschapsvoorwaardenDiv = document.querySelector('[data-name="namepartnerschapsvoorwaarden"]');
-
-//     partnerRadioButtons.forEach(radio => {
-//         radio.addEventListener('change', () => {
-//             if (document.querySelector('input[name="morepartner"]:checked').value === 'ja') {
-//                 partnerDiv.style.display = 'flex';
-//                 partnerDiv.style.flexDirection = 'column';
-//                 partnerDiv.querySelectorAll('input').forEach(input => input.setAttribute('required', 'true'));
-//             } else {
-//                 partnerDiv.style.display = 'none';
-//                 partnerDiv.querySelectorAll('input').forEach(input => input.removeAttribute('required'));
-//             }
-//         });
-//     });
-
-//     partnerschapsvoorwaardenRadioButtons.forEach(radio => {
-//         radio.addEventListener('change', () => {
-//             if (document.querySelector('input[name="morepartnerschapsvoorwaarden"]:checked').value === 'ja') {
-//                 partnerschapsvoorwaardenDiv.style.display = 'flex';
-//                 partnerschapsvoorwaardenDiv.style.flexDirection = 'column';
-//                 partnerschapsvoorwaardenDiv.querySelectorAll('input').forEach(input => input.setAttribute('required', 'true'));
-//             } else {
-//                 partnerschapsvoorwaardenDiv.style.display = 'none';
-//                 partnerschapsvoorwaardenDiv.querySelectorAll('input').forEach(input => input.removeAttribute('required'));
-//             }
-//         });
-//     });
-// }
-
-// document.addEventListener('DOMContentLoaded', toggleDivVisibility);
-
-// document.querySelectorAll('.checkboxes > fieldset:first-of-type input').forEach(radio => {
-//     radio.addEventListener('change', () => {
-//         const value = document.querySelector('.checkboxes fieldset:first-of-type input:checked').value;
-
-//         document.querySelectorAll('.checkboxes fieldset:not(:first-of-type)').forEach(fieldset => {
-//             fieldset.querySelectorAll('input').forEach(input => input.removeAttribute('required'));
-
-//             switch (value) {
-//                 case 'ja':
-//                     fieldset.style.display = 'flex';
-//                     fieldset.style.flexDirection = 'column';
-//                     fieldset.disabled = false;
-//                     fieldset.querySelectorAll('input').forEach(input => input.setAttribute('required', 'true'));
-//                     break;
-
-//                 case 'nee':
-//                     fieldset.style.display = 'none';
-//                     break;
-//             }
-//         });
-//     });
-// });
-
-// document.querySelectorAll('.checkboxes >fieldset:first-of-type input').forEach(radio => {
-//     radio.addEventListener('change', () => {
-//         const ja = document.querySelector('.checkboxes fieldset:first-of-type input:checked').value === 'ja';
-//         document.querySelectorAll('.checkboxes fieldset:not(:first-of-type)').forEach(fieldset => {
-//             fieldset.style.display = ja ? 'flex' : 'none';
-//             fieldset.style.flexDirection = 'column';
-//             fieldset.disabled = !ja;
-//             fieldset.querySelectorAll('input').forEach(input => input.toggleAttribute('required', ja));
-//         });
-//     });
-// });
-
-// document.querySelectorAll('.checkboxes fieldset:first-of-type input').forEach(function (radio) {
-//     radio.addEventListener('change', function () {
-//         const fieldsets = document.querySelectorAll('.checkboxes fieldset:nth-of-type(2),.checkboxes fieldset:nth-of-type(3)');
-//         const ja = (document.querySelector('.checkboxes fieldset:first-of-type input:checked').value === 'ja');
-//         fieldsets.forEach(function (fieldset) {
-//             if (ja) {
-//                 fieldset.style.display = 'flex';
-//                 fieldset.style.flexDirection = 'column';  
-//             } else {
-//                 fieldset.style.display = 'none';
-//             }
-//             fieldset.disabled = !ja;
-//             fieldset.querySelectorAll('input').forEach(function (input) {
-//                 if (ja) {
-//                     input.setAttribute('required', 'required');
-//                 } else {
-//                     input.removeAttribute('required');
-//                 }
-//             });
-//         });
-//     });
-// });
-
-
-// =======================================================================================
-
+// alles opslaan in sessionstorage
 let savedData = {};
 let autocompletedData;
 

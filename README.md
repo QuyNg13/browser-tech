@@ -524,20 +524,48 @@ document.addEventListener('DOMContentLoaded', toggleDivVisibility);
 </details>
 </details>
 
-
-
-### Volgende week
-
-
+Ik heb na de JS funtie werkend te krijgen nog kort kunnen zitten aan validatie. Hiervoor gebruik ik `input:user-invalid` en `input:user-valid` in CSS om styling te geven aan de border om duidelijk feedback te geven aan de gebruiker.
+<details>
+  <summary>progressive enhancement</summary>
+    
+```
+input:user-invalid{
+     border:solid var(--NS-error-color);
+ }
+ 
+ input:user-valid{
+     border:solid var(--NS-success-color);
+ }
+```
 </details>
+</details>
+
 <details>
 <summary><h2>Week 4</h2></summary>
 
 ### Doel
-
+Na zo lang gewerkt te hebben aan hetzelfe probleem wil ik deze week beginnen aan wat anders wat nog wel realistisch is om af te maken voor de deadline. Ik heb ervoor gekozen om vraag 3b te maken. In dit stuk van het formulier geef je aan of er verkrijgers zijn voor wie je geen aangifte doet. Als deze er zijn moet je voor elke verkrijger een klein formulier invullen met hun gegevens er op. Ik wil het zo maken dat het formulier voor elke verkrijger in eerste instantie niet zichtbaar is.
 
 ### Voortgang
+Om ervoor te zorgen dat alles zichtbaar is wanneer JS niet werkt heb ik het zo gemaakt dat staandaard alles zichtbaar is en dat JS de elementen onzichtbaar maakt.
+<details>
+  <summary>progressive enhancement</summary>
+    
+```
+document.addEventListener("DOMContentLoaded", () => {
+    document.querySelectorAll('[data-name^="name"]').forEach(div => {
+        div.style.display = 'none';
+    });
+    toggleDivVisibility();
+    verkrijgerknop();
+    hideverkrijger();
+});
 
+function hideverkrijger(){
+    document.getElementById('nojs').style.display = 'none';
+}
+```
+</details>
 
 ### Volgende week
 

@@ -53,11 +53,13 @@ form{
 }
 
 input:user-invalid{
-    border:solid var(--NS-error-color);
+    outline: 0.2em solid var(--NS-error-color);
+    border-radius: 2px;
 }
 
 input:user-valid{
-    border:solid var(--NS-success-color);
+    outline: 0.2em solid var(--NS-success-color);
+    border-radius: 2px;
 }
 
 #vraag1a {

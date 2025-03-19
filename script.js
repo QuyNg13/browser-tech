@@ -28,7 +28,13 @@ function toggleDivVisibility() {
     });
 }
 
-document.addEventListener('DOMContentLoaded', toggleDivVisibility);
+document.addEventListener("DOMContentLoaded", () => {
+    document.querySelectorAll('[data-name^="name"]').forEach(div => {
+        div.style.display = 'none';
+    });
+
+    toggleDivVisibility();
+});
 
 // function toggleDivVisibility() {
 //     const partnerRadioButtons = document.querySelectorAll('input[name="morepartner"]');

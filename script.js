@@ -55,7 +55,7 @@ function verkrijgerknop(){
 
 let verkrijgerTeller = 1;
 
-function verkrijgertoevoegen() {
+function verkrijgertoevoegen(button) {
     verkrijgerTeller++;
 
     const formContainer = document.querySelector('[data-name="nameverkrijger"]');
@@ -99,11 +99,17 @@ function verkrijgertoevoegen() {
                 <input type="radio" name="legitiemeportie${verkrijgerTeller}" value="nee">Nee
             </label>
         </fieldset>
+        <div id="verkrijgerbuttons">
         <button class="btn" type="button" onclick="verkrijgertoevoegen()">verkrijger toevoegen</button>
-        <button class="btn" type="button" onclick="verkrijgerVerwijderen()">laatste verkrijger verwijderen</button>`;
+        <button class="btn" type="button" onclick="verkrijgerVerwijderen()">laatste verkrijger verwijderen</button>
+        </div>`;
+        
 
     formContainer.appendChild(newForm);
+
+    verplaatsKnoppen();
 }
+
 
 function verkrijgerVerwijderen() {
     const formContainer = document.querySelector('[data-name="nameverkrijger"]');
@@ -112,6 +118,28 @@ function verkrijgerVerwijderen() {
     if (verkrijgers.length > 0) {
         formContainer.removeChild(verkrijgers[verkrijgers.length - 1]);
         verkrijgerTeller--;
+    }
+
+    verplaatsKnoppen();
+}
+
+function verplaatsKnoppen() {
+    const formContainer = document.querySelector('[data-name="nameverkrijger"]');
+    const verkrijgers = formContainer.querySelectorAll(".verkrijger");
+
+    document.querySelector(".verkrijgerbuttons")?.remove();
+
+    if (verkrijgers.length > 0) {
+        const laatsteVerkrijger = verkrijgers[verkrijgers.length - 1];
+
+        const buttonContainer = document.createElement("div");
+        buttonContainer.classList.add("verkrijgerbuttons");
+        buttonContainer.innerHTML = `
+            <button class="btn" type="button" onclick="verkrijgertoevoegen()">verkrijger toevoegen</button>
+            <button class="btn" type="button" onclick="verkrijgerVerwijderen()">laatste verkrijger verwijderen</button>
+        `;
+
+        laatsteVerkrijger.appendChild(buttonContainer);
     }
 }
 

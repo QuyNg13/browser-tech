@@ -865,6 +865,74 @@ function verplaatsKnoppen() {
 }
 ```
 </details>
+
+Ik heb als allerlaatst ook re responsiveness en code opgeschoond door classes te gebruiken waar het handig was.
+<details>
+  <summary>responsiveness code</summary>
+  HTML:
+  
+```
+<fieldset>
+                        <h4>volledige naam overledene*</h4>
+                        <div class="threecolumns">
+                            <label for="voorletter(s)">
+                                voorletter(s)*
+                                <input type="text" id="voorletter(s)" name="voorlettersoverledene" required></label>
+                            <label for="tussenvoegsel(s)">
+                                tussenvoegsel(s)
+                                <input type="text" id="tussenvoegsel(s)" name="tussenvoegselsoverledene"></label>
+                            <label for="achternaam">
+                                achternaam*
+                                <input type="text" id="achternaam" name="achternaamoverledene" required></label>
+                        </div>
+                    </fieldset>
+                    <fieldset>
+                        <h4>Burgerservicenummer en overlijdensdatum*</h4>
+                        <div class="twocolumns">
+                            <div>
+                                <label for="Burgerservicenummer">
+                                    Burgerservicenummer*
+                                    <input type="text" id="Burgerservicenummer" name="Burgerservicenummer" minlength="8"
+                                        maxlength="9" pattern="[0-9]+" required>
+                                </label>
+                            </div>
+                            <div>
+                                <label for="Overlijdensdatum">
+                                    Overlijdensdatum*
+                                    <input type="date" value="2025-02-27" max="2025-02-27" id="Overlijdensdatum"
+                                        name="Overlijdensdatum" required>
+                                </label>
+                            </div>
+                        </div>
+                    </fieldset>
+```
+
+CSS:
+```
+    .threecolumns{
+        grid-column-start: 1;
+        grid-column-end: end;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        justify-content: space-between;
+        gap: 1em;
+    }
+
+    .twocolumns{
+        grid-column-start: 1;
+        grid-column-end: end;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        justify-content: space-between;
+        gap: 1em;
+    }
+```
+
+</details>
+
+Zonder CSS of JS is het formulier nogsteeds functioneel!
+
+
 </details>
 
 <details>

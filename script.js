@@ -6,20 +6,20 @@
 
 function toggleDivVisibility() {
     const radioButtons = document.querySelectorAll('input[type="radio"][name^="more"]');
-    
+
     radioButtons.forEach(radio => {
         const radioName = radio.name;
         const dataName = `[data-name="name${radioName.replace('more', '')}"]`;
-        
+
         const targetDiv = document.querySelector(dataName);
-        
+
         radio.addEventListener('change', () => {
             const isChecked = document.querySelector(`input[name="${radioName}"]:checked`);
-            
+
             if (isChecked && isChecked.value === 'ja') {
                 targetDiv.style.display = 'flex';
                 targetDiv.style.flexDirection = 'column';
-                targetDiv.querySelectorAll('input').forEach(input => input.setAttribute('required', 'true'));
+                targetDiv.querySelectorAll('input:not(.notrequired)').forEach(input => input.setAttribute('required', 'true'));
             } else {
                 targetDiv.style.display = 'none';
                 targetDiv.querySelectorAll('input').forEach(input => input.removeAttribute('required'));
@@ -34,12 +34,90 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     toggleDivVisibility();
+    verkrijgerknop();
+    hideverkrijger();
+
 });
+
+function hideverkrijger(){
+    document.getElementById('nojs').style.display = 'none';
+}
+
+function verkrijgerknop(){
+    const verkrijgerContainer = document.querySelector('[data-name="nameverkrijger"] > div');
+    const addButton = document.createElement("button");
+    addButton.type = "button";
+    addButton.textContent = "Voeg verkrijger toe";
+    addButton.onclick = verkrijgertoevoegen;
+    verkrijgerContainer.appendChild(addButton);
+}
+
+let verkrijgerTeller = 1;
+
+function verkrijgertoevoegen() {
+    verkrijgerTeller++;
+
+    const formContainer = document.querySelector('[data-name="nameverkrijger"]');
+
+    const newForm = document.createElement("div");
+    newForm.classList.add("verkrijger")
+    newForm.innerHTML = `
+        <fieldset class="columnlabel">
+            <h4>Gegevens verkrijger ${verkrijgerTeller}</h4>
+            <div class="threecolumns">
+                <label for="voorletter${verkrijgerTeller}">voorletter(s)*
+                    <input type="text" id="voorletter${verkrijgerTeller}" name="voorletters${verkrijgerTeller}" required>
+                </label>
+                <label for="tussenvoegsel${verkrijgerTeller}">tussenvoegsel(s)
+                    <input class="notrequired" type="text" id="tussenvoegsel${verkrijgerTeller}" name="tussenvoegsel${verkrijgerTeller}">
+                </label>
+                <label for="achternaam${verkrijgerTeller}">achternaam*
+                    <input type="text" id="achternaam${verkrijgerTeller}" name="achternaam${verkrijgerTeller}" required>
+                </label>
+                <label for="Burgerservicenummer${verkrijgerTeller}">Burgerservicenummer verkrijger*
+                    <input type="text" id="Burgerservicenummer${verkrijgerTeller}" name="Burgerservicenummer${verkrijgerTeller}" minlength="8"
+                        maxlength="9" pattern="[0-9]+" required>
+                </label>
+            </div>
+        </fieldset>
+        <fieldset>
+            <p>Krijgt deze verkrijger waarvoor u geen aangifte doet het hele vermogen?</p>
+            <label>
+                <input type="radio" name="gehelevermogen${verkrijgerTeller}" value="ja" required>Ja
+            </label>
+            <label>
+                <input type="radio" name="gehelevermogen${verkrijgerTeller}" value="nee">Nee
+            </label>
+        </fieldset>
+        <fieldset>
+            <p>Doet deze verkrijger een beroep op diens legitieme portie (wettelijke erfdeel)?</p>
+            <label>
+                <input type="radio" name="legitiemeportie${verkrijgerTeller}" value="ja" required>Ja
+            </label>
+            <label>
+                <input type="radio" name="legitiemeportie${verkrijgerTeller}" value="nee">Nee
+            </label>
+        </fieldset>
+        <button type="button" onclick="verkrijgertoevoegen()">verkrijger toevoegen</button>
+        <button type="button" onclick="verkrijgerVerwijderen()">laatste verkrijger verwijderen</button>`;
+
+    formContainer.appendChild(newForm);
+}
+
+function verkrijgerVerwijderen() {
+    const formContainer = document.querySelector('[data-name="nameverkrijger"]');
+    const verkrijgers = formContainer.querySelectorAll(".verkrijger");
+
+    if (verkrijgers.length > 0) {
+        formContainer.removeChild(verkrijgers[verkrijgers.length - 1]);
+        verkrijgerTeller--;
+    }
+}
 
 // function toggleDivVisibility() {
 //     const partnerRadioButtons = document.querySelectorAll('input[name="morepartner"]');
 //     const partnerschapsvoorwaardenRadioButtons = document.querySelectorAll('input[name="morepartnerschapsvoorwaarden"]');
-    
+
 //     const partnerDiv = document.querySelector('[data-name="namepartner"]');
 //     const partnerschapsvoorwaardenDiv = document.querySelector('[data-name="namepartnerschapsvoorwaarden"]');
 
@@ -55,7 +133,7 @@ document.addEventListener("DOMContentLoaded", () => {
 //             }
 //         });
 //     });
-    
+
 //     partnerschapsvoorwaardenRadioButtons.forEach(radio => {
 //         radio.addEventListener('change', () => {
 //             if (document.querySelector('input[name="morepartnerschapsvoorwaarden"]:checked').value === 'ja') {
@@ -75,7 +153,7 @@ document.addEventListener("DOMContentLoaded", () => {
 // document.querySelectorAll('.checkboxes > fieldset:first-of-type input').forEach(radio => {
 //     radio.addEventListener('change', () => {
 //         const value = document.querySelector('.checkboxes fieldset:first-of-type input:checked').value;
-        
+
 //         document.querySelectorAll('.checkboxes fieldset:not(:first-of-type)').forEach(fieldset => {
 //             fieldset.querySelectorAll('input').forEach(input => input.removeAttribute('required'));
 

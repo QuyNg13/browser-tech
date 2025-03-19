@@ -264,6 +264,266 @@ Ik heb een beetje verdiept in validatie door te kijken naar het veld voor het BS
 ```
 </details>
 
+Ik heb met behulp van de [code van jeremy keith](https://gist.github.com/rosemulazada/29379f3e0586491f235e0eb39d108aa5) ervoor gezorgd dat alle invoervelden, checkboxes en radiobuttons worden opgeslagen in sessionstorage. Ik heb ervoor gekozen om de gegevens op te slaan in session storage omdat het mij de veiligere optie leek omdat het elke keer leeg wordt gehaald als het tabje gesloten wordt, ook vond ik het makkelijker te begrijpen dan de andere opties.
+De code van Jeremy code zorgt ervoor dat ingevulde gegevens in een formulier automatisch worden opgeslagen in localStorage zodra je een invoerveld verlaat `(blur-event)`. Dit werkt zolang het formulier een data-form-topic attribuut heeft. Bij het openen van de pagina kijkt de code of er eerder opgeslagen gegevens zijn en vult die automatisch in. Dit gebeurt door de localStorage uit te lezen en de juiste velden weer in te vullen. De gegevens worden opgeslagen als een object, waarbij de veldnamen de sleutels zijn en de ingevulde waarden worden onthouden. Hierdoor blijven je gegevens bewaard de pagina vernieuwd wordt. In mijn geval heb ik localstorage uitgewisselt met sessionstorage.
+<details>
+  <summary>sessionstorage</h4></summary>
+    
+```
+let savedData = {};
+let autocompletedData;
+
+const inputs = document.getElementsByTagName("input");
+
+document.addEventListener("DOMContentLoaded", () => {
+    const form = document.querySelector("form");
+
+    if (window.sessionStorage) {
+        if (!form) {
+            return;
+        }
+
+        if (!form.dataset.formTopic) {
+            return;
+        }
+
+        let getFormTopic = sessionStorage.getItem(form.dataset.formTopic);
+        if (!getFormTopic) {
+            return;
+        }
+        autocompletedData = JSON.parse(getFormTopic);
+
+        var formTopic = form.dataset.formTopic;
+        console.log(formTopic);
+
+        function getKeyValue() {
+            for (const dataKey in autocompletedData) {
+                let value = autocompletedData[dataKey];
+
+                let formField = document.querySelector(
+                    "[name = " + dataKey + "]"
+                );
+
+                switch (formField.type) {
+                    case "radio":
+                        formField = document.querySelector(
+                            `input[name = '${dataKey}'][value = '${value}']`
+                        );
+                        formField.setAttribute("checked", "checked");
+                        break;
+                    case "checkbox":
+                        formField.setAttribute("checked", "checked");
+                        break;
+                    case "file":
+                        break;
+                    default:
+                        formField.value = value;
+                }
+            }
+        }
+
+        getKeyValue();
+    }
+});
+
+if (window.sessionStorage) {
+    function saveFormDataToSessionStorage(e) {
+        const form = e.target.closest("form");
+        let submitData = new FormData(form);
+
+        for (let [dataKey, value] of submitData.entries()) {
+            savedData[dataKey] = value;
+            console.log(dataKey, value);
+        }
+
+        window.sessionStorage.setItem(
+            form.dataset.formTopic,
+            JSON.stringify(savedData)
+        );
+    }
+
+    Array.prototype.forEach.call(inputs, function (input) {
+        switch (input.type) {
+        }
+
+        input.addEventListener("blur", function (e) {
+            e.preventDefault();
+
+            saveFormDataToSessionStorage(e);
+        });
+    });
+}
+```
+</details>
+
+Ik heb deze week meerdere versies gemaakt van de functie die er voor zorgt dat je optionele vragen pas te zien krijgs als de value van de radio button juist is. De code moest niet onnodig lang/ingewikkeld zijn en zelf de benodigde fieldset onzichtbaar maken zodat als JS niet werkt de gebruiker het hele form ziet en gewoon door kan gaan met het formulier invullen. Bij vraag 1b komen er 2 vragen uit, uit beide van deze vragen komt nog een invoerveld op basis van hoe je de vraag beantwoord. Ik ben er hier dus achter gekomen dat de vragen en inputs tevoorschijn moeten komen afhankelijk van de value van de radio button van de directe parent.
+<details>
+  <summary>alle versies</summary>
+    
+In de eerste verbetering heb ik gebruik gemaakt van `toggleAttribute` op basis van feedback van Vasilis, dit is korter dat een if else gebruiken met `setattribute` en `removeattribute`. 
+<details>
+  <summary>versie 1</summary>
+    
+```
+document.querySelectorAll('.checkboxes fieldset:first-of-type input').forEach(radio => {
+    radio.addEventListener('change', () => {
+        const ja = document.querySelector('.checkboxes fieldset:first-of-type input:checked').value === 'ja';
+        document.querySelectorAll('.checkboxes fieldset:not(:first-of-type)').forEach(fieldset => {
+            fieldset.style.display = ja ? 'flex' : 'none';
+            fieldset.style.flexDirection = 'column';
+            fieldset.disabled = !ja;
+            fieldset.querySelectorAll('input').forEach(input => input.toggleAttribute('required', ja));
+        });
+    });
+});
+```
+</details>
+
+In de tweede verbetering heb ik andere versie gemaakt die voor mij beter leesbaar was. Ik heb hier geprobeerd om hem zo te maken dat het mogelijk is om hem ook op andere plekken te gebruiken mocht het formulier hetzelfde opgebouwd zijn.
+<details>
+  <summary>versie 2</summary>
+    
+```
+document.querySelectorAll('.checkboxes > fieldset:first-of-type input').forEach(radio => {
+    radio.addEventListener('change', () => {
+        const value = document.querySelector('.checkboxes fieldset:first-of-type input:checked').value;
+
+        document.querySelectorAll('.checkboxes fieldset:not(:first-of-type)').forEach(fieldset => {
+            fieldset.querySelectorAll('input').forEach(input => input.removeAttribute('required'));
+
+            switch (value) {
+                case 'ja':
+                    fieldset.style.display = 'flex';
+                    fieldset.style.flexDirection = 'column';
+                    fieldset.disabled = false;
+                    fieldset.querySelectorAll('input').forEach(input => input.setAttribute('required', 'true'));
+                    break;
+
+                case 'nee':
+                    fieldset.style.display = 'none';
+                    break;
+            }
+        });
+    });
+});
+```
+</details>
+
+In de derde verbetering heb ik advies van Vasilis opgevolgd en gebruik gemaakt van `<div>` om de elementen het die ik wil verbergen met een `-data-` atribuut om ze aan te roepen. op deze manier kan ik de divs koppelen aan de vragen en op ze op die manier tevoorschijn laten komen. maar in deze versie heb ik de vunctie praktisch gezien elke keer opnieuw geschreven voor elke vraag.
+<details>
+  <summary>versie 3</summary>
+    
+```
+function toggleDivVisibility() {
+    const partnerRadioButtons = document.querySelectorAll('input[name="morepartner"]');
+    const partnerschapsvoorwaardenRadioButtons = document.querySelectorAll('input[name="morepartnerschapsvoorwaarden"]');
+
+    const partnerDiv = document.querySelector('[data-name="namepartner"]');
+    const partnerschapsvoorwaardenDiv = document.querySelector('[data-name="namepartnerschapsvoorwaarden"]');
+
+    partnerRadioButtons.forEach(radio => {
+        radio.addEventListener('change', () => {
+            if (document.querySelector('input[name="morepartner"]:checked').value === 'ja') {
+                partnerDiv.style.display = 'flex';
+                partnerDiv.style.flexDirection = 'column';
+                partnerDiv.querySelectorAll('input').forEach(input => input.setAttribute('required', 'true'));
+            } else {
+                partnerDiv.style.display = 'none';
+                partnerDiv.querySelectorAll('input').forEach(input => input.removeAttribute('required'));
+            }
+        });
+    });
+
+    partnerschapsvoorwaardenRadioButtons.forEach(radio => {
+        radio.addEventListener('change', () => {
+            if (document.querySelector('input[name="morepartnerschapsvoorwaarden"]:checked').value === 'ja') {
+                partnerschapsvoorwaardenDiv.style.display = 'flex';
+                partnerschapsvoorwaardenDiv.style.flexDirection = 'column';
+                partnerschapsvoorwaardenDiv.querySelectorAll('input').forEach(input => input.setAttribute('required', 'true'));
+            } else {
+                partnerschapsvoorwaardenDiv.style.display = 'none';
+                partnerschapsvoorwaardenDiv.querySelectorAll('input').forEach(input => input.removeAttribute('required'));
+            }
+        });
+    });
+}
+
+document.addEventListener('DOMContentLoaded', toggleDivVisibility);
+```
+</details>
+
+In de vierde verbetering heb ik een poging gedaan om het korter te maken maken, maar ik moet nog steeds voor elke vraag die ik op deze manier wil laten functioneren iets toevoegen aan het script wat ik niet wil.
+<details>
+  <summary>versie 4</summary>
+    
+```
+function toggleDivVisibility() {
+    const toggleVisibility = (radioButtons, divSelector) => {
+        radioButtons.forEach(button => {
+            button.addEventListener('change', () => {
+                const selectedButton = document.querySelector(`input[name="${radioButtons[0].name}"]:checked`);
+                
+                // Controleer of er een geselecteerde radio button is
+                if (selectedButton) {
+                    const selectedValue = selectedButton.value;
+                    const div = document.querySelector(divSelector);
+
+                    if (selectedValue === 'ja') {
+                        div.style.display = 'flex';
+                        div.style.flexDirection = 'column';
+                        div.querySelectorAll('input').forEach(input => input.setAttribute('required', 'true'));
+                    } else {
+                        div.style.display = 'none';
+                        div.querySelectorAll('input').forEach(input => input.removeAttribute('required'));
+                    }
+                }
+            });
+        });
+    };
+
+    const partnerRadioButtons = document.querySelectorAll('input[name="morepartner"]');
+    const partnerschapsvoorwaardenRadioButtons = document.querySelectorAll('input[name="morepartnerschapsvoorwaarden"]');
+    
+    toggleVisibility(partnerRadioButtons, '[data-name="namepartner"]');
+    toggleVisibility(partnerschapsvoorwaardenRadioButtons, '[data-name="namepartnerschapsvoorwaarden"]');
+}
+```
+</details>
+
+Uiteindelijk is het me gelukt bij de vijfde verbetering door te queryselector zo aan te passen dat hij zoekt naar een `name=` attribute dat begint met more. dit betekent dat de vragen wel verschillende names kunnen hebben als ze maar beginnen met "more" en de div waaraan ze gekoppelt zijn een `-data-name` hebben die begint met "name".
+<details>
+  <summary>versie 5</summary>
+    
+```
+function toggleDivVisibility() {
+    const radioButtons = document.querySelectorAll('input[type="radio"][name^="more"]');
+    
+    radioButtons.forEach(radio => {
+        const radioName = radio.name;
+        const dataName = `[data-name="name${radioName.replace('more', '')}"]`;
+        
+        const targetDiv = document.querySelector(dataName);
+        
+        radio.addEventListener('change', () => {
+            const isChecked = document.querySelector(`input[name="${radioName}"]:checked`);
+            
+            if (isChecked && isChecked.value === 'ja') {
+                targetDiv.style.display = 'flex';
+                targetDiv.style.flexDirection = 'column';
+                targetDiv.querySelectorAll('input').forEach(input => input.setAttribute('required', 'true'));
+            } else {
+                targetDiv.style.display = 'none';
+                targetDiv.querySelectorAll('input').forEach(input => input.removeAttribute('required'));
+            }
+        });
+    });
+}
+
+document.addEventListener('DOMContentLoaded', toggleDivVisibility);
+```
+</details>
+</details>
+
 
 
 ### Volgende week

@@ -62,7 +62,7 @@ input:user-valid{
     border-radius: 2px;
 }
 
-#vraag1a {
+.columnlabel{
     label {
         display: flex;
         flex-direction: column;
@@ -102,7 +102,7 @@ input:user-valid{
         width: 912px;
     }
     
-    #vraag1a{
+    /* #vraag1a{
         fieldset:nth-of-type(1) {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
@@ -137,5 +137,23 @@ input:user-valid{
                 flex-direction: column;
             }
         }
+    } */
+
+    .threecolumns{
+        grid-column-start: 1;
+        grid-column-end: end;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        justify-content: space-between;
+        gap: 1em;
+    }
+
+    .twocolumns{
+        grid-column-start: 1;
+        grid-column-end: end;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        justify-content: space-between;
+        gap: 1em;
     }
 }

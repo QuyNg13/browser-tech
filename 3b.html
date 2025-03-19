@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>Dit is een schoolopdracht!!!!!!!</h1>
+    <h1>Aangifte erfbelasting formulier</h1>
+    <br>
+    <main>
+        <section>
+            <form class="checkboxes" data-form-topic="3b" method="post">
+                <fieldset>
+                    <legend>
+                        <h3>Vraag 1b</h3>
+                    </legend>
+                    <fieldset>
+                        <legend hidden>voor wie doet u geen aangifte?</legend>
+                        <p>Zijn er verkrijgers voor wie u <b>geen</b> aangifte doet?</p>
+                        <label>
+                            <input type="radio" name="moreverkrijger" value="ja" required>Ja</label>
+                        <label>
+                            <input type="radio" name="moreverkrijger" value="nee">Nee</label>
+                    </fieldset>
+                    <div data-name="nameverkrijger">
+                        <fieldset class="columnlabel">
+                            <legend hidden>Gegevens vergkrijger*</legend>
+                            <h4>Gegevens verkrijger 1</h4>
+                            <div class="threecolumns">
+                                <legend hidden>volledige naam verkrijger*</legend>
+                                <label for="voorletter(s)">
+                                    voorletter(s)*
+                                    <input type="text" id="voorletter(s)" name="voorlettersoverledene" required></label>
+                                <label for="tussenvoegsel(s)">
+                                    tussenvoegsel(s)
+                                    <input type="text" id="tussenvoegsel(s)" name="tussenvoegselsoverledene"></label>
+                                <label for="achternaam">
+                                    achternaam*
+                                    <input type="text" id="achternaam" name="achternaamoverledene" required></label>
+                                <label for="Burgerservicenummer">
+                                    Burgerservicenummer verkrijger*
+                                    <input type="text" id="Burgerservicenummer" name="Burgerservicenummer" minlength="8"
+                                        maxlength="9" pattern="[0-9]+" required>
+                                </label>
+                            </div>
+                        </fieldset>
+                        <fieldset>
+                            <p>Krijgt deze verkrijger waarvoor u geen aangifte doet het hele vermogen?</p>
+                            <label>
+                                <input type="radio" value="ja" required>Ja</label>
+                            <label>
+                                <input type="radio" value="nee">Nee</label>
+                        </fieldset>
+                        <fieldset>
+                            <p>Doet deze verkrijger een beroep op diens legitieme portie (wettelijke erfdeel)?</p>
+                            <label>
+                                <input type="radio" value="ja" required>Ja</label>
+                            <label>
+                                <input type="radio" value="nee">Nee</label>
+                        </fieldset>
+                    </div>
+                    <div>
+                        <a href="1b.html" class="btn">Vorige</a>
+                        <input type="submit" value="Volgende" class="btn">
+                    </div>
+            </form>
+        </section>
+    </main>
+</body>
+<script src="script.js"></script>
+
+</html>

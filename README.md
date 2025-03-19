@@ -567,7 +567,304 @@ function hideverkrijger(){
 ```
 </details>
 
-### Volgende week
+Bij het maken van vraag 3b ben ik begonnen met het maken van de HTML. Ik ben er vanuit gegaan dat als JS niet werkt dat er dan vier verkrijgers zijn zoals bij het PDF bestand. deze vier formulieren staan ook niet op required aangezien we er niet van uit kunnen gaan dat iedereen deze velden nodig heeft.
+
+<details>
+  <summary>vraag 3b HTML</summary>
+    
+```
+<form id="geenverkrijgers" data-form-topic="3b">
+                <fieldset>
+                    <legend>
+                        <h3>Vraag 3b</h3>
+                    </legend>
+                    <fieldset>
+                        <legend hidden>voor wie doet u geen aangifte?</legend>
+                        <p>Zijn er verkrijgers voor wie u <b>geen</b> aangifte doet?</p>
+                        <label>
+                            <input type="radio" name="moreverkrijger" value="ja" required>Ja</label>
+                        <label>
+                            <input type="radio" name="moreverkrijger" value="nee">Nee</label>
+                    </fieldset>
+                    <div data-name="nameverkrijger">
+                        <div>
+                            <fieldset class="columnlabel">
+                                <legend hidden>Gegevens vergkrijger*</legend>
+                                <h4>Gegevens verkrijger 1</h4>
+                                <div class="threecolumns">
+                                    <legend hidden>volledige naam verkrijger*</legend>
+                                    <label for="voorletter(s)">
+                                        voorletter(s)*
+                                        <input type="text" id="voorletter(s)" name="voorlettersoverledene"></label>
+                                    <label for="tussenvoegsel(s)">
+                                        tussenvoegsel(s)
+                                        <input class="notrequired" type="text" id="tussenvoegsel(s)"
+                                            name="tussenvoegselsoverledene"></label>
+                                    <label for="achternaam">
+                                        achternaam*
+                                        <input type="text" id="achternaam" name="achternaamoverledene" ></label>
+                                    <label for="Burgerservicenummer">
+                                        Burgerservicenummer verkrijger*
+                                        <input type="text" id="Burgerservicenummer" name="Burgerservicenummer"
+                                            minlength="8" maxlength="9" pattern="[0-9]+" >
+                                    </label>
+                                </div>
+                            </fieldset>
+                            <fieldset>
+                                <p>Krijgt deze verkrijger waarvoor u geen aangifte doet het hele vermogen?</p>
+                                <label>
+                                    <input type="radio" name="gehelevermogen" value="ja" >Ja</label>
+                                <label>
+                                    <input type="radio" name="gehelevermogen" value="nee">Nee</label>
+                            </fieldset>
+                            <fieldset>
+                                <p>Doet deze verkrijger een beroep op diens legitieme portie (wettelijke erfdeel)?</p>
+                                <label>
+                                    <input type="radio" name="legitiemeportie" value="ja" >Ja</label>
+                                <label>
+                                    <input type="radio" name="legitiemeportie" value="nee">Nee</label>
+                            </fieldset>
+                        </div>
+                        <div id="nojs">
+                            <div>
+                                <fieldset class="columnlabel">
+                                    <legend hidden>Gegevens vergkrijger*</legend>
+                                    <h4>Gegevens verkrijger 1</h4>
+                                    <div class="threecolumns">
+                                        <legend hidden>volledige naam verkrijger*</legend>
+                                        <label for="voorletter(s)">
+                                            voorletter(s)*
+                                            <input type="text" id="voorletter(s)" name="voorlettersoverledene"></label>
+                                        <label for="tussenvoegsel(s)">
+                                            tussenvoegsel(s)
+                                            <input class="notrequired" type="text" id="tussenvoegsel(s)"
+                                                name="tussenvoegselsoverledene"></label>
+                                        <label for="achternaam">
+                                            achternaam*
+                                            <input type="text" id="achternaam" name="achternaamoverledene" ></label>
+                                        <label for="Burgerservicenummer">
+                                            Burgerservicenummer verkrijger*
+                                            <input type="text" id="Burgerservicenummer" name="Burgerservicenummer"
+                                                minlength="8" maxlength="9" pattern="[0-9]+" >
+                                        </label>
+                                    </div>
+                                </fieldset>
+                                <fieldset>
+                                    <p>Krijgt deze verkrijger waarvoor u geen aangifte doet het hele vermogen?</p>
+                                    <label>
+                                        <input type="radio" name="gehelevermogen" value="ja" >Ja</label>
+                                    <label>
+                                        <input type="radio" name="gehelevermogen" value="nee">Nee</label>
+                                </fieldset>
+                                <fieldset>
+                                    <p>Doet deze verkrijger een beroep op diens legitieme portie (wettelijke erfdeel)?</p>
+                                    <label>
+                                        <input type="radio" name="legitiemeportie" value="ja" >Ja</label>
+                                    <label>
+                                        <input type="radio" name="legitiemeportie" value="nee">Nee</label>
+                                </fieldset>
+                            </div>
+                            <div>
+                                <fieldset class="columnlabel">
+                                    <legend hidden>Gegevens vergkrijger*</legend>
+                                    <h4>Gegevens verkrijger 1</h4>
+                                    <div class="threecolumns">
+                                        <legend hidden>volledige naam verkrijger*</legend>
+                                        <label for="voorletter(s)">
+                                            voorletter(s)*
+                                            <input type="text" id="voorletter(s)" name="voorlettersoverledene"></label>
+                                        <label for="tussenvoegsel(s)">
+                                            tussenvoegsel(s)
+                                            <input class="notrequired" type="text" id="tussenvoegsel(s)"
+                                                name="tussenvoegselsoverledene"></label>
+                                        <label for="achternaam">
+                                            achternaam*
+                                            <input type="text" id="achternaam" name="achternaamoverledene" ></label>
+                                        <label for="Burgerservicenummer">
+                                            Burgerservicenummer verkrijger*
+                                            <input type="text" id="Burgerservicenummer" name="Burgerservicenummer"
+                                                minlength="8" maxlength="9" pattern="[0-9]+" >
+                                        </label>
+                                    </div>
+                                </fieldset>
+                                <fieldset>
+                                    <p>Krijgt deze verkrijger waarvoor u geen aangifte doet het hele vermogen?</p>
+                                    <label>
+                                        <input type="radio" name="gehelevermogen" value="ja" >Ja</label>
+                                    <label>
+                                        <input type="radio" name="gehelevermogen" value="nee">Nee</label>
+                                </fieldset>
+                                <fieldset>
+                                    <p>Doet deze verkrijger een beroep op diens legitieme portie (wettelijke erfdeel)?</p>
+                                    <label>
+                                        <input type="radio" name="legitiemeportie" value="ja" >Ja</label>
+                                    <label>
+                                        <input type="radio" name="legitiemeportie" value="nee">Nee</label>
+                                </fieldset>
+                            </div>
+                            <div>
+                                <fieldset class="columnlabel">
+                                    <legend hidden>Gegevens vergkrijger*</legend>
+                                    <h4>Gegevens verkrijger 1</h4>
+                                    <div class="threecolumns">
+                                        <legend hidden>volledige naam verkrijger*</legend>
+                                        <label for="voorletter(s)">
+                                            voorletter(s)*
+                                            <input type="text" id="voorletter(s)" name="voorlettersoverledene"></label>
+                                        <label for="tussenvoegsel(s)">
+                                            tussenvoegsel(s)
+                                            <input class="notrequired" type="text" id="tussenvoegsel(s)"
+                                                name="tussenvoegselsoverledene"></label>
+                                        <label for="achternaam">
+                                            achternaam*
+                                            <input type="text" id="achternaam" name="achternaamoverledene" ></label>
+                                        <label for="Burgerservicenummer">
+                                            Burgerservicenummer verkrijger*
+                                            <input type="text" id="Burgerservicenummer" name="Burgerservicenummer"
+                                                minlength="8" maxlength="9" pattern="[0-9]+" >
+                                        </label>
+                                    </div>
+                                </fieldset>
+                                <fieldset>
+                                    <p>Krijgt deze verkrijger waarvoor u geen aangifte doet het hele vermogen?</p>
+                                    <label>
+                                        <input type="radio" name="gehelevermogen" value="ja" >Ja</label>
+                                    <label>
+                                        <input type="radio" name="gehelevermogen" value="nee">Nee</label>
+                                </fieldset>
+                                <fieldset>
+                                    <p>Doet deze verkrijger een beroep op diens legitieme portie (wettelijke erfdeel)?</p>
+                                    <label>
+                                        <input type="radio" name="legitiemeportie" value="ja" >Ja</label>
+                                    <label>
+                                        <input type="radio" name="legitiemeportie" value="nee">Nee</label>
+                                </fieldset>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <a href="1b.html" class="btn">Vorige</a>
+                        <input type="submit" value="Volgende" class="btn">
+                    </div>
+            </form>
+```
+</details>
+
+Als de JS wel werkt moeten de velden niet weergegeven worden. Dit doe ik met de `hideverkrijger()` functie die ik eerder heb laten zien. Ook wordt de knop om verkrijgers toe te voegen alleen weergegeven als de JS werkt.
+<details>
+  <summary>knop bij werkende JS</summary>
+    
+```
+function verkrijgerknop(){
+    const verkrijgerContainer = document.querySelector('[data-name="nameverkrijger"] > div');
+    const addButton = document.createElement("button");
+    addButton.type = "button";
+    addButton.textContent = "Voeg verkrijger toe";
+    addButton.onclick = verkrijgertoevoegen;
+    addButton.classList.add("btn");
+    verkrijgerContainer.appendChild(addButton);
+}
+```
+</details>
+
+De knop roept een functie aan die kleine formulieren aan de container toe voegt. elk vormulier krijgt een cijfer op basis van `verkrijgerTeller`, deze variable gaat elke keer omhoog als er een nieuw form word aangemaakt en omlaag als er eentje wordt weggehaald. Als er een formulier wordt weggehaald wordt het formulier met de hoogste cijfer verwijderd.
+<details>
+  <summary>toevoegen en verwijderen van fieldsets</summary>
+    
+```
+let verkrijgerTeller = 1;
+function verkrijgertoevoegen(button) {
+    verkrijgerTeller++;
+
+    const formContainer = document.querySelector('[data-name="nameverkrijger"]');
+
+    const newForm = document.createElement("div");
+    newForm.classList.add("verkrijger")
+    newForm.innerHTML = `
+        <fieldset class="columnlabel">
+            <h4>Gegevens verkrijger ${verkrijgerTeller}</h4>
+            <div class="threecolumns">
+                <label for="voorletter${verkrijgerTeller}">voorletter(s)*
+                    <input type="text" id="voorletter${verkrijgerTeller}" name="voorletters${verkrijgerTeller}" required>
+                </label>
+                <label for="tussenvoegsel${verkrijgerTeller}">tussenvoegsel(s)
+                    <input class="notrequired" type="text" id="tussenvoegsel${verkrijgerTeller}" name="tussenvoegsel${verkrijgerTeller}">
+                </label>
+                <label for="achternaam${verkrijgerTeller}">achternaam*
+                    <input type="text" id="achternaam${verkrijgerTeller}" name="achternaam${verkrijgerTeller}" required>
+                </label>
+                <label for="Burgerservicenummer${verkrijgerTeller}">Burgerservicenummer verkrijger*
+                    <input type="text" id="Burgerservicenummer${verkrijgerTeller}" name="Burgerservicenummer${verkrijgerTeller}" minlength="8"
+                        maxlength="9" pattern="[0-9]+" required>
+                </label>
+            </div>
+        </fieldset>
+        <fieldset>
+            <p>Krijgt deze verkrijger waarvoor u geen aangifte doet het hele vermogen?</p>
+            <label>
+                <input type="radio" name="gehelevermogen${verkrijgerTeller}" value="ja" required>Ja
+            </label>
+            <label>
+                <input type="radio" name="gehelevermogen${verkrijgerTeller}" value="nee">Nee
+            </label>
+        </fieldset>
+        <fieldset>
+            <p>Doet deze verkrijger een beroep op diens legitieme portie (wettelijke erfdeel)?</p>
+            <label>
+                <input type="radio" name="legitiemeportie${verkrijgerTeller}" value="ja" required>Ja
+            </label>
+            <label>
+                <input type="radio" name="legitiemeportie${verkrijgerTeller}" value="nee">Nee
+            </label>
+        </fieldset>`;
+        
+
+    formContainer.appendChild(newForm);
+
+    verplaatsKnoppen();
+}
+
+
+function verkrijgerVerwijderen() {
+    const formContainer = document.querySelector('[data-name="nameverkrijger"]');
+    const verkrijgers = formContainer.querySelectorAll(".verkrijger");
+
+    if (verkrijgers.length > 0) {
+        formContainer.removeChild(verkrijgers[verkrijgers.length - 1]);
+        verkrijgerTeller--;
+    }
+
+    verplaatsKnoppen();
+}
+```
+</details>
+
+Elke keer dat er een formulier wordt toegevoegd of verwijderd moet de knoppen van het toevoegen en verwijder verplaatst worden naar het laatste form. Dit heb ik gedaan met een functie die de knoppen elke keer verwijders wanner er een formulier word toegevoegd of verwijderd en de knoppen onder het form zet met de hoogste teller. Ik heb deze functie gemaakt met behulp van chatGPT. ik had de knoppen eerst onder elke form staan en werden niet verwijderd, hierdoor stonden de knoppen onder elke form.
+<details>
+  <summary>knoppen verplaatsen op basis van aantal forms</summary>
+    
+```
+function verplaatsKnoppen() {
+    const formContainer = document.querySelector('[data-name="nameverkrijger"]');
+    const verkrijgers = formContainer.querySelectorAll(".verkrijger");
+
+    document.querySelector(".verkrijgerbuttons")?.remove();
+
+    if (verkrijgers.length > 0) {
+        const laatsteVerkrijger = verkrijgers[verkrijgers.length - 1];
+
+        const buttonContainer = document.createElement("div");
+        buttonContainer.classList.add("verkrijgerbuttons");
+        buttonContainer.innerHTML = `
+            <button class="btn" type="button" onclick="verkrijgertoevoegen()">verkrijger toevoegen</button>
+            <button class="btn" type="button" onclick="verkrijgerVerwijderen()">laatste verkrijger verwijderen</button>
+        `;
+
+        laatsteVerkrijger.appendChild(buttonContainer);
+    }
+}
+```
+</details>
 
 
 </details>
